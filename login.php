@@ -49,6 +49,8 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
     <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
 
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -99,8 +101,6 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
 
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
-
-<script src="js/sweetalert.min.js"></script>
 
 <script>
     if("<?= $hata ?>" != ""){
