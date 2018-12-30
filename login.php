@@ -7,8 +7,29 @@ try{
     print $e->getMessage();
 }
 
+$hata = "";
+
 // Eger eposta ve sifre varsa islem yaptir
-if(isset($_POST['eposta'], $_POST['sifre']))
+if(isset($_POST['eposta'], $_POST['sifre'])){
+
+    $eposta = trim($_POST['eposta']);
+    $sifre = md5(trim($_POST['sifre']));
+
+    $query = $db->prepare("SELECT * FROM ogrenciler WHERE email = :email");
+    $query->bindValue(':email', $eposta, PDO::PARAM_STR);
+    $query->execute();
+    if($query->rowCount() > 0){
+        $data = $query->fetch(PDO::FETCH_OBJ);
+        if($data->sifre == $sifre){
+            //
+        }else{
+            $hata = "Şifre hatalı, lütfen tekrar deneyiniz";
+        }
+    } else{
+        $hata = "Böyle bir kullanıcı bulunamadı";
+    }
+
+}
 
 ?>
 
@@ -77,6 +98,14 @@ if(isset($_POST['eposta'], $_POST['sifre']))
 
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    if("<?= $hata ?>" != ""){
+        swal("Hata!", "<?= $hata ?>", "error");
+    }
+</script>
 
 </body>
 
