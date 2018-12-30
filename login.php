@@ -1,8 +1,15 @@
 <?php
 
+require "src/config.php";
+
+// Eger giris yapmissa index.php git
+if(isset($_SESSION['login'])){
+    header("location: /");
+}
+
 // DB baglantisi
 try{
-    $db = new PDO("mysql:host=db4free.net:3306;dbname=fh_online_ogr", "fh_online_user", "fh159357");
+    $db = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8", $dbuser, $dbpass);
 }catch(PDOException $e){
     print $e->getMessage();
 }
@@ -22,7 +29,27 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
     if($query->rowCount() > 0){
         $data = $query->fetch(PDO::FETCH_OBJ);
         if($data->sifre == $sifre){
-            //
+
+            // Ogrenci karti bakiye cekme
+            $ogrbakiye = $db->prepare("SELECT * FROM ogrenci_kart WHERE id = :id");
+            $ogrbakiye->bindValue(':id', $data->id, PDO::PARAM_STR);
+            $ogrbakiye->execute();
+            $ogrbakiye = $ogrbakiye->fetch(PDO::FETCH_OBJ);
+
+            // Kent kart bakiye
+            $kentbakiye = $db->prepare("SELECT * FROM kent_kart WHERE id = :id");
+            $kentbakiye->bindValue(':id', $data->tc, PDO::PARAM_STR);
+            $kentbakiye->execute();
+            $kentbakiye = $kentbakiye->fetch(PDO::FETCH_OBJ);
+
+            // Sesion ayarlari
+            $_SESSION['login'] = TRUE;
+            $_SESSION['data'] = json_decode(json_encode($data), TRUE);
+            $_SESSION['ogrbakiye'] = json_decode(json_encode($ogrbakiye), TRUE);
+            $_SESSION['kentbakiye'] = json_decode(json_encode($kentbakiye), TRUE);
+
+            // Yonlendirme
+            header("location: /");
         }else{
             $hata = "Şifre hatalı, lütfen tekrar deneyiniz";
         }
@@ -49,8 +76,6 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
     <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
 
     <link rel="stylesheet" href="css/style.css">
-
-    <script src="js/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -101,6 +126,8 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
 
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
+
+<script src="js/sweetalert.min.js"></script>
 
 <script>
     if("<?= $hata ?>" != ""){
