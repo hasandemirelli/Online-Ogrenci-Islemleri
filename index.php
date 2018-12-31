@@ -157,7 +157,7 @@ if(!isset($_SESSION['login'])){
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Öğrenci Kartı Bakiye</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['ogrbakiye']['bakiye'] ?></h3>
+                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['data']['ogr_bakiye'] ?></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -177,12 +177,12 @@ if(!isset($_SESSION['login'])){
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Kent Kart Bakiye</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['kentbakiye']['bakiye'] ?></h3>
+                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['data']['kent_bakiye'] ?></h3>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="text-muted mt-3 mb-0">
-                                    <i class="mdi mdi-counter mr-1" aria-hidden="true"></i> <?= $_SESSION['kentbakiye']['kartno'] ?>
+                                    <i class="mdi mdi-counter mr-1" aria-hidden="true"></i> <?= $_SESSION['data']['kent_kartno'] ?>
                                 </p>
                             </div>
                         </div>
@@ -204,18 +204,14 @@ if(!isset($_SESSION['login'])){
             </footer>
 
         </div>
-        <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
 </div>
-<!-- container-scroller -->
 
 <script src="vendors/js/vendor.bundle.base.js"></script>
 <script src="vendors/js/vendor.bundle.addons.js"></script>
 
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
-
 <script src="js/dashboard.js"></script>
 
 </body>
