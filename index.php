@@ -7,6 +7,7 @@ if(!isset($_SESSION['login'])){
     header("location: login.php");
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +95,7 @@ if(!isset($_SESSION['login'])){
                     <div class="collapse" id="ogr-kart">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Kart Bilgilerim</a>
+                                <a class="nav-link" href="ogrkart.php">Kart Bilgilerim</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Bakiye Yükle</a>
@@ -133,7 +134,9 @@ if(!isset($_SESSION['login'])){
                     <div class="collapse" id="uyelikler">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Office 365</a>
+                                <a class="nav-link"
+                                   href="https://login.microsoftonline.com/common/oauth2/authorize?client_id=4345a7b9-9a63-4910-a426-35363201d503&response_mode=form_post&response_type=code+id_token&scope=openid+profile&state=OpenIdConnect.AuthenticationProperties%3dtDm3i9DUr2nXEQUOsiihc1VZePBsfOi2hC6bWuPcu18FL8-czesJObuPRnYckefktYPrhNyD8w3tEgs3RCf7hlY2Jt7od_j6bkTs7jT4UtE4IB5ZjDacWof95mv1EVWTc6IgYkPCgu31WUmhlUK_NcgkSdjTzaytuaQFKRbI0SAxeBOSZgDO_ZX9n3wU_LGR&nonce=636818440628335463.NTNlNWZhYWUtYmE5ZS00YzQ4LTk2ZTQtYTE1NjlkNDQ0N2NhYTkyOTg3YTItOTU5Zi00MmE2LThlYjUtNjkwM2Y2MDEzOWQw&redirect_uri=https%3a%2f%2fwww.office.com%2f&ui_locales=tr-TR&mkt=tr-TR&client-request-id=6759fa5a-b9f6-4b4f-bbdf-052e03d17541&login_hint=170204013%40ogr.alanya.edu.tr">Office
+                                    365</a>
                             </li>
                         </ul>
                     </div>
@@ -157,7 +160,7 @@ if(!isset($_SESSION['login'])){
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Öğrenci Kartı Bakiye</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['ogrbakiye']['bakiye'] ?></h3>
+                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['data']['ogr_bakiye'] ?></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -177,12 +180,12 @@ if(!isset($_SESSION['login'])){
                                     <div class="float-right">
                                         <p class="mb-0 text-right">Kent Kart Bakiye</p>
                                         <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['kentbakiye']['bakiye'] ?></h3>
+                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['data']['kent_bakiye'] ?></h3>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="text-muted mt-3 mb-0">
-                                    <i class="mdi mdi-counter mr-1" aria-hidden="true"></i> <?= $_SESSION['kentbakiye']['kartno'] ?>
+                                    <i class="mdi mdi-counter mr-1" aria-hidden="true"></i> <?= $_SESSION['data']['kent_kartno'] ?>
                                 </p>
                             </div>
                         </div>
@@ -204,18 +207,14 @@ if(!isset($_SESSION['login'])){
             </footer>
 
         </div>
-        <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
 </div>
-<!-- container-scroller -->
 
 <script src="vendors/js/vendor.bundle.base.js"></script>
 <script src="vendors/js/vendor.bundle.addons.js"></script>
 
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
-
 <script src="js/dashboard.js"></script>
 
 </body>

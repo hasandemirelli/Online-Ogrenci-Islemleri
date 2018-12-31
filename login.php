@@ -22,7 +22,7 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
     $eposta = trim($_POST['eposta']);
     $sifre = md5(trim($_POST['sifre']));
 
-    $query = $db->prepare("SELECT * FROM ogrenciler WHERE email = :email");
+    $query = $db->prepare("SELECT * FROM birlesik_veriler WHERE email = :email");
     $query->bindValue(':email', $eposta, PDO::PARAM_STR);
     $query->execute();
 
@@ -30,23 +30,21 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
         $data = $query->fetch(PDO::FETCH_OBJ);
         if($data->sifre == $sifre){
 
-            // Ogrenci karti bakiye cekme
-            $ogrbakiye = $db->prepare("SELECT * FROM ogrenci_kart WHERE id = :id");
-            $ogrbakiye->bindValue(':id', $data->id, PDO::PARAM_STR);
-            $ogrbakiye->execute();
-            $ogrbakiye = $ogrbakiye->fetch(PDO::FETCH_OBJ);
-
-            // Kent kart bakiye
-            $kentbakiye = $db->prepare("SELECT * FROM kent_kart WHERE id = :id");
-            $kentbakiye->bindValue(':id', $data->tc, PDO::PARAM_STR);
-            $kentbakiye->execute();
-            $kentbakiye = $kentbakiye->fetch(PDO::FETCH_OBJ);
+            /*
+             SELECT ogrenciler.*,
+                   ogrenci_kart.bakiye AS ogr_bakiye,
+                   ogrenci_kart.durum AS ogr_durum,
+                   kent_kart.kartno AS kent_kartno,
+                   kent_kart.bakiye AS kent_bakiye,
+                   kent_kart.durum AS kent_durum
+             FROM ogrenciler
+             INNER JOIN ogrenci_kart ON ogrenci_kart.id = ogrenciler.id
+             INNER JOIN kent_kart ON kent_kart.id = ogrenciler.tc
+             */
 
             // Sesion ayarlari
             $_SESSION['login'] = TRUE;
             $_SESSION['data'] = json_decode(json_encode($data), TRUE);
-            $_SESSION['ogrbakiye'] = json_decode(json_encode($ogrbakiye), TRUE);
-            $_SESSION['kentbakiye'] = json_decode(json_encode($kentbakiye), TRUE);
 
             // Yonlendirme
             header("location: /");
@@ -86,6 +84,14 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
                 <div class="col-lg-4 mx-auto">
                     <div class="auto-form-wrapper">
                         <form action="login.php" method="POST">
+                            <div data-bind="component: { name: 'logo-control',
+                    params: {
+                        isChinaDc: svr.fIsChinaDc,
+                        bannerLogoUrl: bannerLogoUrl() } }"><!--  --><!-- ko if: bannerLogoUrl -->
+                                <img class="banner-logo" role="presentation" data-bind="attr: { src: bannerLogoUrl }"
+                                     src="https://secure.aadcdn.microsoftonline-p.com/c1c6b6c8-ylan0lvhqomf-ocgtyij6pdepln8srglwggx1degzim/logintenantbranding/0/bannerlogo?ts=636633616184033825">
+                                <!-- /ko --><!-- ko if: !bannerLogoUrl && !isChinaDc --><!-- /ko --></div>
+
                             <div class="form-group">
                                 <label class="label">Kullanıcı Adı</label>
                                 <div class="input-group">
