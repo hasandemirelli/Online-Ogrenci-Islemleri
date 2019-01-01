@@ -41,7 +41,8 @@ if(!isset($_SESSION['login'])){
                 <li class="nav-item dropdown d-none d-xl-inline-block">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <span class="profile-text">Hoşgeldin, <?= $_SESSION['data']['ad'] ?> <?= $_SESSION['data']['soyad'] ?></span>
-                        <img class="img-xs rounded-circle" src="images/faces/face1.jpg" alt="Profile image">
+                        <img class="img-xs rounded-circle" src="images/faces/<?= $_SESSION['data']['id'] ?>.jpg "
+                             alt="Profile image">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <a href="https://paroladegistirme.alanya.edu.tr" class="dropdown-item mt-2">
@@ -68,7 +69,7 @@ if(!isset($_SESSION['login'])){
                     <div class="nav-link">
                         <div class="user-wrapper">
                             <div class="profile-image">
-                                <img src="images/faces/face1.jpg" alt="profile image">
+                                <img src="images/faces/<?= $_SESSION['data']['id'] ?>.jpg" alt="profile image">
                             </div>
                             <div class="text-wrapper">
                                 <p class="profile-name"><?= $_SESSION['data']['ad'] ?> <?= $_SESSION['data']['soyad'] ?></p>
@@ -101,7 +102,7 @@ if(!isset($_SESSION['login'])){
                                 <a class="nav-link" href="#">Bakiye Yükle</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Kayıp Kart Bildir</a>
+                                <a class="nav-link" href="kayipkart.php">Kayıp Kart Bildir</a>
                             </li>
                         </ul>
                     </div>
