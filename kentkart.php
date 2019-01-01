@@ -4,8 +4,15 @@ session_start();
 
 
 <html>
+<table align=”center”>
+    <tr align=”center”>
+        <td align=”center”>
 <body>
+<table align=”center”>
+    <tr align=”center”>
+        <td align=”center”>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
     <tbody>
     <tr>
         <td valign="middle" width="100%">
@@ -36,40 +43,10 @@ session_start();
                     <td>
                         <input name="txtTCK" type="text" value="<?= $_SESSION['data']['tc'] ?>" readonly="readonly"
                                id="txtTCK" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
+                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:300px;">
                     </td>
-                    <td style="width: 40px">
-                        <span id="Label7"
-                              style="display:inline-block;font-family:Tahoma;font-size:8pt;font-weight:normal;width:90px;">Fakülte</span>
-                    </td>
-                    <td>
-                        <input name="txtFakulte" type="text" value="<?= $_SESSION['data']['fakulte'] ?>"
-                               readonly="readonly" id="txtFakulte" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
-                    </td>
-
                 </tr>
-                <tr>
-                    <td style="width: 38px">
-                        <span id="Label6"
-                              style="display:inline-block;font-family:Tahoma;font-size:8pt;font-weight:normal;width:110px;">Öğrenci Numarası</span>
-                    </td>
-                    <td style="width: 171px">
-                        <input name="txtOgrNo" type="text" value="<?= $_SESSION['data']['id'] ?>" readonly="readonly"
-                               id="txtOgrNo" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
-                    </td>
-                    <td style="width: 40px">
-                        <span id="Label8"
-                              style="display:inline-block;font-family:Tahoma;font-size:8pt;font-weight:normal;width:90px;">Bölüm</span>
-                    </td>
-                    <td>
-                        <input name="txtBolum" type="text" value="<?= $_SESSION['data']['bolum'] ?>" readonly="readonly"
-                               id="txtBolum" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
-                    </td>
 
-                </tr>
                 <tr>
                     <td style="width: 38px">
                         <span id="Label1"
@@ -78,18 +55,8 @@ session_start();
                     <td style="width: 171px">
                         <input name="txtAd" type="text" value="<?= $_SESSION['data']['ad'] ?>" readonly="readonly"
                                id="txtAd" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
+                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:300px;">
                     </td>
-                    <td style="width: 40px">
-                        <span id="Label9"
-                              style="display:inline-block;font-family:Tahoma;font-size:8pt;font-weight:normal;width:90px;">Program</span>
-                    </td>
-                    <td>
-                        <input name="txtProgram" type="text" value="<?= $_SESSION['data']['program'] ?>"
-                               readonly="readonly" id="txtProgram" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
-                    </td>
-
                 </tr>
                 <tr>
                     <td style="width: 38px">
@@ -99,7 +66,29 @@ session_start();
                     <td style="width: 171px">
                         <input name="txtSoyad" type="text" value="<?= $_SESSION['data']['soyad'] ?>" readonly="readonly"
                                id="txtSoyad" class="Textbox" autocomplete="off"
-                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:220px;">
+                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 38px">
+                        <span id="Label2"
+                              style="display:inline-block;font-family:Tahoma;font-size:8pt;font-weight:normal;width:110px;">Doğum Tarihi</span>
+                    </td>
+                    <td style="width: 171px">
+                        <input name="txtDogum" type="text" value="<?= $_SESSION['data']['dogum'] ?>" readonly="readonly"
+                               id="txtDogum" class="Textbox" autocomplete="off"
+                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:300px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 38px">
+                        <span id="Label2"
+                              style="display:inline-block;font-family:Tahoma;font-size:8pt;font-weight:normal;width:110px;">Okulu</span>
+                    </td>
+                    <td style="width: 171px">
+                        <input name="txtOkulu" type="text" value="<?= $_SESSION['data']['uni'] ?>" readonly="readonly"
+                               id="txtOkulu" class="Textbox" autocomplete="off"
+                               style="color:#000040;background-color:#E0E0E0;font-family:Tahoma;font-size:8pt;font-weight:normal;width:300px;">
                     </td>
                 </tr>
 

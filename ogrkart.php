@@ -1,23 +1,30 @@
 <?php
 session_start();
 ?>
-
-
 <html>
+<table align=”center”>
+    <tr align=”center”>
+        <td align=”center”>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-    <tbody>
-    <tr>
-        <td valign="middle" width="100%">
-            <span id="lblZorunlu" style="color:Red;font-family:Tahoma;font-size:8pt;font-weight:normal;"></span>
-        </td>
-    </tr>
-    <tr>
-        <td style="height: 24px; background-color: #364960; text-align: center" valign="middle" width="100%">
-            <span id="Label14" style="color:White;font-family:Tahoma;font-size:8pt;font-weight:normal;">.:: Öğrenci Kartı Bilgi Formu ::.</span>
-        </td>
-    </tr>
-    </tbody>
+<table align=”center”>
+    <tr align=”center”>
+        <td align=”center”>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <form>
+                    <tbody>
+                    <tr>
+                        <td valign="middle" width="100%">
+                            <span id="lblZorunlu"
+                                  style="color:Red;font-family:Tahoma;font-size:8pt;font-weight:normal;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 24px; background-color: #364960; text-align: center" valign="middle"
+                            width="100%">
+                            <span id="Label14" style="color:White;font-family:Tahoma;font-size:8pt;font-weight:normal;">.:: Öğrenci Kartı Bilgi Formu ::.</span>
+                        </td>
+                    </tr>
+                    </tbody>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="border-right: #000033 1px solid;
                     border-top: #000033 1px solid; border-left: #000033 1px solid; border-bottom: #000033 1px solid; color: #000000;"
@@ -111,6 +118,6 @@ session_start();
     </tr>
     </tbody>
 </table>
-
+            </form>
 </body>
 </html>
