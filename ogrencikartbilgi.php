@@ -7,7 +7,6 @@ if(!isset($_SESSION['login'])){
     header("location: login.php");
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +182,7 @@ if(!isset($_SESSION['login'])){
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Fakülte</label>
+                                                <label class="col-sm-3 col-form-label">Bölüm</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" value="<?= $_SESSION['data']['bolum'] ?>" disabled>
                                                 </div>
@@ -201,7 +200,7 @@ if(!isset($_SESSION['login'])){
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Fakülte</label>
+                                                <label class="col-sm-3 col-form-label">Program</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" value="<?= $_SESSION['data']['program'] ?>" disabled>
                                                 </div>
