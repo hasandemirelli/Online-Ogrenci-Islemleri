@@ -190,6 +190,29 @@ if(!isset($_SESSION['login'])){
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card card-weather">
+                            <div class="card-body">
+                                <div class="weather-date-location">
+                                    <h3 id="day"></h3>
+                                    <p class="text-gray">
+                                        <span class="weather-date" id="tarih"></span>
+                                        <span class="weather-location"> Alanya, TR</span>
+                                    </p>
+                                </div>
+                                <div class="weather-data d-flex">
+                                    <div class="mr-auto">
+                                        <h4 class="display-3" id="derece"></h4>
+                                        <p id="havadurumuyazi"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -215,6 +238,37 @@ if(!isset($_SESSION['login'])){
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
 <script src="js/dashboard.js"></script>
+
+<script>
+    $(document).ready(function(){
+        var d = new Date();
+        var weekday = new Array(7);
+        weekday[0] = "Pazar";
+        weekday[1] = "Pazartesi";
+        weekday[2] = "Salı";
+        weekday[3] = "Çarşamba";
+        weekday[4] = "Perşembe";
+        weekday[5] = "Cuma";
+        weekday[6] = "Cumartesi";
+
+        var n = weekday[d.getDay()];
+        document.getElementById("day").innerHTML = n;
+
+        var aylar = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık");
+        var now = new Date();
+        var yil = now.getFullYear();
+        var ay = now.getMonth();
+        var gun = now.getDate();
+        var haftagun = now.getDay();
+        document.getElementById("tarih").innerHTML = gun + " " + aylar[ay] + " " + yil;
+
+        $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=alanya,tr&lang=tr&appid=4573c189d467ca1814c1c10000060792', function(data) {
+            document.getElementById("havadurumuyazi").innerHTML = data.weather[0].description.toUpperCase();
+            document.getElementById("derece").innerHTML = Math.ceil(data.main.temp-273)+"<span class='symbol'>°</span>C";
+        });
+    });
+</script>
+
 
 </body>
 </html>
