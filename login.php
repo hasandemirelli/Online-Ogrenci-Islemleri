@@ -84,14 +84,6 @@ if(isset($_POST['eposta'], $_POST['sifre'])){
                 <div class="col-lg-4 mx-auto">
                     <div class="auto-form-wrapper">
                         <form action="login.php" method="POST">
-                            <div data-bind="component: { name: 'logo-control',
-                    params: {
-                        isChinaDc: svr.fIsChinaDc,
-                        bannerLogoUrl: bannerLogoUrl() } }"><!--  --><!-- ko if: bannerLogoUrl -->
-                                <img class="banner-logo" role="presentation" data-bind="attr: { src: bannerLogoUrl }"
-                                     src="https://secure.aadcdn.microsoftonline-p.com/c1c6b6c8-ylan0lvhqomf-ocgtyij6pdepln8srglwggx1degzim/logintenantbranding/0/bannerlogo?ts=636633616184033825">
-                                <!-- /ko --><!-- ko if: !bannerLogoUrl && !isChinaDc --><!-- /ko --></div>
-
                             <div class="form-group">
                                 <label class="label">Kullanıcı Adı</label>
                                 <div class="input-group">

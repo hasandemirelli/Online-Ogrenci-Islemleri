@@ -116,10 +116,10 @@ if(!isset($_SESSION['login'])){
                     <div class="collapse" id="kent-kart">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="kentkart.php">Kart Bilgilerim</a>
+                                <a class="nav-link" href="kentkartbilgi.php">Kart Bilgilerim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Bakiye Yükle</a>
+                                <a class="nav-link" href="kentbakiyeyukle.php">Bakiye Yükle</a>
                             </li>
                         </ul>
                     </div>

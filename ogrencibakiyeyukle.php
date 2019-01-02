@@ -115,10 +115,10 @@ if(!isset($_SESSION['login'])){
                     <div class="collapse" id="kent-kart">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="kentkart.php">Kart Bilgilerim</a>
+                                <a class="nav-link" href="kentkartbilgi.php">Kart Bilgilerim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Bakiye Yükle</a>
+                                <a class="nav-link" href="kentbakiyeyukle.php">Bakiye Yükle</a>
                             </li>
                         </ul>
                     </div>
@@ -239,7 +239,7 @@ if(!isset($_SESSION['login'])){
             swal({
                 icon: "info",
                 title: "Hata!",
-                text: "Kart bilgilerini boş bırakılamaz",
+                text: "Kart bilgileri boş bırakılamaz",
                 type: "info"
             });
             return false;
@@ -253,7 +253,7 @@ if(!isset($_SESSION['login'])){
             var bakiye = $("#bakiye").val();
             $.ajax({
                 type: "GET",
-                url: "src/ogrbakiyeyukle.php",
+                url: "src/ogr_ajax.php",
                 data: {
                     'bakiye' : bakiye
                 },
@@ -279,15 +279,6 @@ if(!isset($_SESSION['login'])){
                 }
             });
         });
-
-        /*swal({
-            icon: "success",
-            title: "Başarılı!",
-            text: "Kayıp kart bildiriminiz bize ulaştı, en kısa sürede size geri dönüş sağlayacağız",
-            type: "success"
-        }).then(function() {
-            window.location = "/";
-        });*/
     }
 </script>
 
