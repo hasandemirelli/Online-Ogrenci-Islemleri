@@ -16,7 +16,7 @@ if(!isset($_SESSION['login'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Online Öğrenci İşlemleri</title>
+    <title>Online Öğrenci İşlemleri - Öğrenci Kart Bilgisi</title>
 
     <link rel="shortcut icon" href="images/favicon.png" />
 
@@ -147,51 +147,84 @@ if(!isset($_SESSION['login'])){
 
         <div class="main-panel">
             <div class="content-wrapper">
-
                 <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                        <div class="card card-statistics">
+
+                    <div class="col-12 grid-margin">
+                        <div class="card">
                             <div class="card-body">
-                                <div class="clearfix">
-                                    <div class="float-left">
-                                        <i class="mdi mdi-cash-multiple text-danger icon-lg"></i>
-                                    </div>
-                                    <div class="float-right">
-                                        <p class="mb-0 text-right">Öğrenci Kartı Bakiye</p>
-                                        <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['data']['ogr_bakiye'] ?></h3>
+                                <h4 class="card-title">Öğrenci Kart Bilgileri</h4>
+                                <form class="form-sample">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">T.C. Kimlik No</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['tc'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Fakülte</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['fakulte'] ?>" disabled>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p class="text-muted mt-3 mb-0">
-                                    <i class="mdi mdi-school mr-1" aria-hidden="true"></i> <?= $_SESSION['data']['uni'] ?>
-                                </p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Öğrenci Numarası</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['id'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Fakülte</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['bolum'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Ad</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['ad'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Fakülte</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['program'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Soyad</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['soyad'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                        <div class="card card-statistics">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <div class="float-left">
-                                        <i class="mdi mdi-cash-100 text-warning icon-lg"></i>
-                                    </div>
-                                    <div class="float-right">
-                                        <p class="mb-0 text-right">Kent Kart Bakiye</p>
-                                        <div class="fluid-container">
-                                            <h3 class="font-weight-medium text-right mb-0">₺<?= $_SESSION['data']['kent_bakiye'] ?></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-muted mt-3 mb-0">
-                                    <i class="mdi mdi-counter mr-1" aria-hidden="true"></i> <?= $_SESSION['data']['kent_kartno'] ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-
 
             <footer class="footer">
                 <div class="container-fluid clearfix">
