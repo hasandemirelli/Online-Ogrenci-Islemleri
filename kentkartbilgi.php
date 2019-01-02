@@ -15,7 +15,7 @@ if(!isset($_SESSION['login'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Online Öğrenci İşlemleri - Kayıp Öğrenci Kartı Bildir</title>
+    <title>Online Öğrenci İşlemleri - Kent Kart Bilgisi</title>
 
     <link rel="shortcut icon" href="images/favicon.png" />
 
@@ -148,34 +148,68 @@ if(!isset($_SESSION['login'])){
             <div class="content-wrapper">
                 <div class="row">
 
-                    <div class="col-6 mx-auto grid-margin stretch-card">
+                    <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Kayıp Öğrenci Kartı Bildir</h4>
-                                <form class="forms-sample">
-                                    <div class="form-group">
-                                        <label>Öğrenci Numarası</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['id'] ?>" disabled>
+                                <h4 class="card-title">Kent Kart Bilgileri</h4>
+                                <form class="form-sample">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Kent Kart Numarası</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['kent_kartno'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Doğum Tarihi</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['dogum'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Ad Soyad</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['ad'] ?> <?= $_SESSION['data']['soyad'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">T.C. Kimlik No</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['tc'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Üniversite</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['uni'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>E-Posta</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['email'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Ad</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['ad'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Telefon</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['tel'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Soyad</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['data']['soyad'] ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleTextarea1">Açıklama Giriniz</label>
-                                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                                    </div>
-
                                 </form>
-                                <button class="btn btn-success mr-2" onclick="basarili()">Gönder</button>
                             </div>
                         </div>
                     </div>
@@ -205,21 +239,6 @@ if(!isset($_SESSION['login'])){
 <script src="js/off-canvas.js"></script>
 <script src="js/misc.js"></script>
 <script src="js/dashboard.js"></script>
-
-<script src="js/sweetalert.min.js"></script>
-
-<script>
-    function basarili() {
-        swal({
-            icon: "success",
-            title: "Başarılı!",
-            text: "Kayıp kart bildiriminiz bize ulaştı, en kısa sürede size geri dönüş sağlayacağız",
-            type: "success"
-        }).then(function() {
-            window.location = "/";
-        });
-    }
-</script>
 
 </body>
 </html>

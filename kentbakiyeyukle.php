@@ -15,7 +15,7 @@ if(!isset($_SESSION['login'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Online Öğrenci İşlemleri - Kayıp Öğrenci Kartı Bildir</title>
+    <title>Online Öğrenci İşlemleri - Kent Kart Bakiye Yükle</title>
 
     <link rel="shortcut icon" href="images/favicon.png" />
 
@@ -151,27 +151,51 @@ if(!isset($_SESSION['login'])){
                     <div class="col-6 mx-auto grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Kayıp Öğrenci Kartı Bildir</h4>
+                                <h4 class="card-title">Kent Kart Bakiye Yükle</h4>
                                 <form class="forms-sample">
                                     <div class="form-group">
-                                        <label>Öğrenci Numarası</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['id'] ?>" disabled>
+                                        <label>Kent Kart Numarası</label>
+                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['kent_kartno'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label>Ad Soyad</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['ad'] ?> <?= $_SESSION['data']['soyad'] ?>" disabled>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend bg-primary border-primary">
+                                                <span class="input-group-text bg-transparent">
+                                                  <i class="mdi mdi mdi-account-multiple text-white"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" id="ad" class="form-control" placeholder="Kart Üzerindeki Ad ve Soyad" aria-label="" aria-describedby="colored-addon1">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>E-Posta</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['email'] ?>" disabled>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend bg-primary border-primary">
+                                                <span class="input-group-text bg-transparent">
+                                                  <i class="mdi mdi mdi-credit-card text-white"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" id="kart" class="form-control" placeholder="Kart Numarası" aria-label="" aria-describedby="colored-addon1">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Telefon</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['data']['tel'] ?>" disabled>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="ay" class="form-control" placeholder="Ay" aria-label="ay" aria-describedby="colored-addon3">
+                                                <input type="text" id="yil" class="form-control" placeholder="Yıl" aria-label="yıl" aria-describedby="colored-addon4">
+                                                <input type="text" id="cvv" class="form-control" placeholder="CVV Güvenlik Kodu" aria-label="cv2" aria-describedby="colored-addon5">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleTextarea1">Açıklama Giriniz</label>
-                                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend bg-primary border-primary">
+                                                <span class="input-group-text bg-transparent text-white">₺</span>
+                                            </div>
+                                            <input type="text" id="bakiye" placeholder="Yüklemek istediğiniz tutar" class="form-control" aria-label="">
+                                            <div class="input-group-append bg-primary border-primary">
+                                                <span class="input-group-text bg-transparent text-white">.00</span>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </form>
@@ -210,13 +234,50 @@ if(!isset($_SESSION['login'])){
 
 <script>
     function basarili() {
-        swal({
-            icon: "success",
-            title: "Başarılı!",
-            text: "Kayıp kart bildiriminiz bize ulaştı, en kısa sürede size geri dönüş sağlayacağız",
-            type: "success"
+
+        if( !$("#ad").val() || !$("#kart").val() || !$("#ay").val() || !$("#yil").val() || !$("#cvv").val() || !$("#bakiye").val()){
+            swal({
+                icon: "info",
+                title: "Hata!",
+                text: "Kart bilgileri boş bırakılamaz",
+                type: "info"
+            });
+            return false;
+        }
+
+        swal("İşleminiz yapılıyor...", {
+            buttons: false,
+            timer: 3000,
+            closeOnClickOutside: false,
         }).then(function() {
-            window.location = "/";
+            var bakiye = $("#bakiye").val();
+            $.ajax({
+                type: "GET",
+                url: "src/kent_ajax.php",
+                data: {
+                    'bakiye' : bakiye
+                },
+                cache: false,
+                success: function(data){
+                    if(data != 'Hata'){
+                        swal({
+                            icon: "success",
+                            title: "Başarılı!",
+                            text: "Kartınıza "+bakiye+" TL bakiye yüklendi",
+                            type: "success"
+                        }).then(function() {
+                            window.location = "/";
+                        });
+                    }else{
+                        swal({
+                            icon: "error",
+                            title: "Hata!",
+                            text: "Kart yüklemesi yaparken hata oluştu, tekrar deneyiniz",
+                            type: "error"
+                        });
+                    }
+                }
+            });
         });
     }
 </script>
