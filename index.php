@@ -119,7 +119,7 @@ if(!isset($_SESSION['login'])){
                                 <a class="nav-link" href="kentkart.php">Kart Bilgilerim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Bakiye Yükle</a>
+                                <a class="nav-link" href="kentkartbakiye_yükleme.php">Bakiye Yükle</a>
                             </li>
                         </ul>
                     </div>

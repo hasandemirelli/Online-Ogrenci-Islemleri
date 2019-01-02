@@ -11,4 +11,4 @@ session_start();
 $dbhost = "localhost";
 $dbname = "onlineogr";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "12345";
